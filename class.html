@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Enlarging images with JS</title>
+  <meta content="A custom js script to enlarge an image">
+  
+</head>
+
+<body>
+<p id="counter">0</p>
+<img class="enlarge" src="img/cat.jpg" onclick="enlargePic()">
+<script>
+	var picture = document.getElementsByClassName("enlarge");
+var counter = document.getElementById("counter");
+picture.addEventListener("click", enlargePic);
+var toggle = 1;
+
+function enlargePic() {
+	var link = picture[0].src;
+	counter.innerHTML = link;
+	var imgSize = {
+		x: picture[0].width,
+		y: picture[0].height
+	}
+	counter.innerHTML = link;
+
+	//Creates a div element and insert it (append) to the body
+	var div = document.createElement("div");
+	div.style.position = "fixed";
+	div.style.top = "0px";
+	div.style.left = "0px";
+	div.style.width = "100%";
+	div.style.height =  "100%";
+	div.style.background = "rgba(0, 0, 0, 0.5)";
+	document.body.appendChild(div);
+
+	//Creates an img element and insert it inside the div we just created
+	var img = document.createElement("img");
+	img.src = link;
+	img.style.position = "relative";
+	img.style.marginLeft = "0 auto";
+	div.appendChild(img);
+}
+/*
+var img = document.createElement("img");
+img.src = counter + ".png";
+lel.appendChild(img);
+
+function myFunction() {
+    var x = document.getElementsByClassName("mystyle")[0].className;
+    var y = document.getElementById("myDIV").className;
+    document.getElementById("demo").innerHTML = "Using getElementsByClassName: " + x + "<br>" + "Using getElementById: " + y;
+}
+
+var element = document.getElementsByClassName('className');
+for (var i = 0; i < element.length; i++) {
+   // your index is inside here
+}
+
+el[i] is the element in the current iteration, i is the index
+
+    (I.e. the third element with the class "className" would be 3)
+
+if (i == 3)
+return el[i]
+*/
+</script>
+</body>
+
+</html>
